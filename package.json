@@ -1,6 +1,11 @@
 {
   "name": "logseq-plugin-milestone",
-  "version": "0.0.0",
+  "version": "1.0.0-dev.1",
+  "main": "dist/index.html",
+  "logseq": {
+    "id": "logseq-plugin-milestone",
+    "icon": "dist/icon.png"
+  },
   "scripts": {
     "dev": "vite",
     "dev:force": "vite --force",
@@ -14,6 +19,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@types/node": "^17.0.8",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "^1.0.7",
