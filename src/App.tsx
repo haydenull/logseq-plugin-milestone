@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import Calendar from 'antd/lib/calendar'
-import 'antd/es/calendar/style/css'
+import 'antd/es/calendar/style/css.js'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div id="faiz" className="w-full" style={{width: import.meta.env.DEV ? '770px' : '100%', height: '379px'}}>
+    <div id="faiz" style={{width: import.meta.env.DEV ? '770px' : '100%'}}>
       <Calendar fullscreen />
     </div>
   )

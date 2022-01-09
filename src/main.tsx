@@ -21,7 +21,25 @@ if (isDevelopment) {
 
       logseq.Editor.insertAtEditingCursor(`{{renderer milestone-${block.uuid}}}`)
     })
+    // logseq.provideStyle(`@import url("https://cdn.jsdelivr.net/npm/antd@4.18.2/dist/antd.min.css");`)
 
+    logseq.setMainUIInlineStyle({
+      position: 'fixed',
+      zIndex: 11,
+    })
+    logseq.provideModel({
+      show(e) {
+        console.log(console.log('[faiz:] === uuid', e))
+        logseq.showMainUI()
+      },
+    })
+    logseq.on('ui:visible:changed', (e) => {
+      if (!e.visible) {
+        // ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+      }
+    })
+
+    // TODO: performance optimize
     logseq.App.onMacroRendererSlotted(async ({ slot, payload }) => {
       console.log('[faiz:] === onMacroRendererSlotted', slot, payload)
       if (!/^milestone/.test(payload?.arguments?.[0])) return 'parse error'
@@ -35,7 +53,8 @@ if (isDevelopment) {
         key: 'milestone',
         slot,
         reset: true,
-        template: ReactDOMServer.renderToStaticMarkup(<App />),
+        // template: ReactDOMServer.renderToStaticMarkup(<App />),
+        template: `<a style="color: var(--ls-link-ref-text-color);" data-on-click="show" data-faiz-uuid="${payload?.uuid}">show calender view1</a>`,
       })
 
     })

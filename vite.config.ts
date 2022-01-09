@@ -8,5 +8,11 @@ export default defineConfig({
   build: {
     target: "esnext",
     // minify: "esbuild",
+    cssCodeSplit: false,
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name][extname]',
+      },
+    },
   },
 })
