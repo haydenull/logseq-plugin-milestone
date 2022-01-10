@@ -2,13 +2,16 @@ import { useState } from 'react'
 import Calendar from 'antd/lib/calendar'
 import 'antd/es/calendar/style/css.js'
 
-function App() {
+const App: React.FC<{ uuid: string }> = ({ uuid }) => {
   const [count, setCount] = useState(0)
 
   return (
-    <div id="faiz" style={{width: import.meta.env.DEV ? '770px' : '100%'}}>
-      <Calendar fullscreen />
-    </div>
+    <>
+      <div className="w-full h-full absolute bg-transparent" onClick={() => logseq.hideMainUI()}></div>
+      <div className="w-1/3 h-5/6 bg-white absolute top-8 right-4 shadow">
+        <Calendar />
+      </div>
+    </>
   )
 }
 

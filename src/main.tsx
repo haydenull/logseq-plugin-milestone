@@ -10,7 +10,7 @@ const PREFIX = "milestone"
 const PLUGIN_ID = "logseq-plugin-milestone"
 
 if (isDevelopment) {
-  renderApp()
+  renderApp('61daca0c-a239-4020-9772-52ca93f6dac9')
 } else {
   console.log('[faiz:] === logseq-plugin-milestone loaded')
   logseq.ready(() => {
@@ -30,14 +30,15 @@ if (isDevelopment) {
     logseq.provideModel({
       show(e) {
         console.log(console.log('[faiz:] === uuid', e))
+        renderApp(e?.dataset?.faizUuid)
         logseq.showMainUI()
       },
     })
-    logseq.on('ui:visible:changed', (e) => {
-      if (!e.visible) {
-        // ReactDOM.unmountComponentAtNode(document.getElementById('root'))
-      }
-    })
+    // logseq.on('ui:visible:changed', (e) => {
+    //   if (!e.visible) {
+    //     // ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+    //   }
+    // })
 
     // TODO: performance optimize
     logseq.App.onMacroRendererSlotted(async ({ slot, payload }) => {
@@ -62,10 +63,10 @@ if (isDevelopment) {
   })
 }
 
-function renderApp() {
+function renderApp(uuid: string) {
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <App uuid={uuid} />
     </React.StrictMode>,
     document.getElementById('root')
   )
