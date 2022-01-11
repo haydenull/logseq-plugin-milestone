@@ -2,7 +2,8 @@ import { BlockEntity } from '@logseq/libs/dist/LSPlugin.user'
 import moment, { Moment } from 'moment'
 
 const getDateFromText = (text: string): Moment => {
-  // return /\[\[(.+?)\]\]/g.exec(text)
+  const last = text?.match(/\[\[(.+?)\]\]/g)?.slice(-1)[0]
+  return moment(last?.replaceAll(/^(\[\[)|(\]\])$/g, ''), 'YYYY-MM-DD')
 }
 
 export const getMilestones = (content: BlockEntity) => {
