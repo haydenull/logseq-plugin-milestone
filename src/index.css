@@ -5,3 +5,6 @@
 html, body {
   background-color: transparent;
 }
+#root {
+  @apply w-screen h-screen;
+}
